@@ -1,0 +1,17 @@
+{
+  "name": "ticketing-ethereum",
+  "version": "1.0.0",
+  "description": "This is the ethereum part of a ticket vending simulation app",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Sanjay S B",
+  "license": "ISC",
+  "dependencies": {
+    "web3": "^1.2.4"
+  }
+}
