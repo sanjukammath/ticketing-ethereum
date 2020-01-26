@@ -12,6 +12,7 @@
   "author": "Sanjay S B",
   "license": "ISC",
   "dependencies": {
+    "@truffle/hdwallet-provider": "^1.0.29",
     "web3": "^1.2.4"
   }
 }
