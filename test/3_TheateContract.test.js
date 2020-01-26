@@ -2,10 +2,9 @@ const TicketingContract = artifacts.require("TicketingContract");
 const TheatreContract = artifacts.require("TheatreContract");
 const ScreenContract = artifacts.require("ScreenContract");
 
-const inox = "INOX";
-const cinepolis = "CINEPOLIS";
-
 contract("TheatreContract", async accounts => {
+  const inox = "INOX";
+  const cinepolis = "CINEPOLIS";
   const [
     ticketingManager,
     inoxManager,
@@ -279,44 +278,6 @@ contract("TheatreContract", async accounts => {
       const NumberOfCafeCoupons = await inoxContract.numberOfCafeCoupons();
       try {
         await inoxContract.claimSoda(NumberOfCafeCoupons);
-        assert(false);
-      } catch {
-        assert(true);
-      }
-    });
-    it("reverts when number of remaining coke is zero", async () => {
-      let NumberOfCafeCoupons = Number(
-        await inoxContract.numberOfCafeCoupons()
-      );
-      const numberOfRemainingCoke = Number(
-        await inoxContract.numberOfRemainingCoke()
-      );
-      let ticketPromises = [];
-      let claimPromises = [];
-      for (i = 0; i < numberOfRemainingCoke; i++) {
-        ticketPromises.push(
-          screenContract1.sellTicket(todayDays, 1, 30, {
-            from: window1
-          })
-        );
-        NumberOfCafeCoupons++;
-        claimPromises.push(
-          inoxContract.claimSoda(NumberOfCafeCoupons, {
-            from: inoxManager
-          })
-        );
-      }
-      await Promise.all(ticketPromises);
-      await Promise.all(claimPromises);
-
-      await screenContract1.sellTicket(todayDays, 1, 30, {
-        from: window1
-      });
-      NumberOfCafeCoupons++;
-      try {
-        await inoxContract.claimSoda(NumberOfCafeCoupons, {
-          from: inoxManager
-        });
         assert(false);
       } catch {
         assert(true);
